@@ -47,9 +47,17 @@ namespace EdTech.Controllers
 
                 using (var context = _connectionProvider.GetConnection())
                 {
-                    //string body = _tools.MakeHtmlNewUser(entity, randomPassword);
+                    // Use MakeHtmlNewUser method to create a customized HTML email
+                    string body = _tools.MakeHtmlNewUser(entity, randomPassword);
 
-                    string body = "<p>Welcome " + entity.UserName + " Your token is: <b>" + randomPassword + "</b></p>";
+                    // Check if the HTML body was generated successfully
+                    if (body == "Error")
+                    {
+                        response.ErrorMessage = "Error creating HTML email.";
+                        response.Code = 500;
+                        return BadRequest(response);
+                    }
+
 
                     string recipient = entity.UserEmail;
 
