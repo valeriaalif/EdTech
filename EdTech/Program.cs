@@ -1,3 +1,4 @@
+using EdTech.Interfaces;
 using EdTech.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSingleton<EdTech.Interfaces.IConnectionProvider, EdTech.Utils.ConnectionProvider>();
 builder.Services.AddSingleton<EdTech.Interfaces.IBCryptHelper, BCryptHelper>();
+builder.Services.AddScoped<ITools, Tools>();
 builder.Services.AddSwaggerGen();
 
 
@@ -27,6 +29,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+ControllerActionEndpointConventionBuilder controllerActionEndpointConventionBuilder = app.MapControllers();
 
 app.Run();

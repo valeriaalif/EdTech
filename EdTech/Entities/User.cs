@@ -9,5 +9,7 @@
         public int? UserType { get; set;} 
         public string? UserToken {  get; set; } = string.Empty;
 
+        public int? UserState { get; set; }
+
     }
 }

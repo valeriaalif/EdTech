@@ -67,9 +67,7 @@ namespace EdTech.Utils
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al enviar el correo: {ex}");
-                // O podrías registrar la excepción en un sistema de registro
-                // logger.LogError($"Error al enviar el correo: {ex}");
+                Console.WriteLine($"Error: {ex}");
                 return false;
             }
         }
@@ -77,7 +75,7 @@ namespace EdTech.Utils
         {
             try
             {
-                string fileRoute = Path.Combine(_hostingEnvironment.ContentRootPath, "HtmlTemplates\\activationCode.html");
+                string fileRoute = Path.Combine(_hostingEnvironment.ContentRootPath, "HtmlTemplates\\registration.html");
                 string htmlFile = System.IO.File.ReadAllText(fileRoute);
                 htmlFile = htmlFile.Replace("@@nickname", userData.UserName);
                 htmlFile = htmlFile.Replace("@@activationCode", tempPassword);
