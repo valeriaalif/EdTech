@@ -46,7 +46,7 @@ namespace EdTech.Utils
                 var message = new MimeMessage();
                 string emailSender = _configuration["Email:SenderAddress"];
                 string emailSenderPassword = _configuration["Email:SenderPassword"];
-                message.From.Add(new MailboxAddress("TEST SENDER", emailSender));
+                message.From.Add(new MailboxAddress("EdTech Team", emailSender));
                 message.To.Add(new MailboxAddress("Recipient", recipient));
                 message.Subject = subject;
 
